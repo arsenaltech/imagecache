@@ -66,8 +66,6 @@ return array(
     |
     */
    
-    'lifetime' => 43200,
-
-    'storage' => 'default',
+    'lifetime' => 43200
 
 );

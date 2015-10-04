@@ -66,11 +66,10 @@ class ImageCache
                 $cache = $app->make('cache');
             }
 
-            if (config("imagecache.storage") == 'default' &&
-                is_a($cache, 'Illuminate\Cache\CacheManager')) {
-
-                // add laravel cache
-                $this->cache = $cache;
+            if (is_a($cache, 'Illuminate\Cache\CacheManager')) {
+                // add laravel cache and set custom cache_driver if persist
+                $cache_driver = config('imagecache.cache_driver');
+                $this->cache = $cache_driver ? $cache->driver($cache_driver) : $cache;
 
             } else {
                     
